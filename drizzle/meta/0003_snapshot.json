@@ -1,0 +1,96 @@
+{
+  "id": "1d4f8623-5ff7-4d42-8c39-2e15386bbf9e",
+  "prevId": "f1b80c94-e9cf-4399-9e01-3c2b6c4eccce",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.tickets": {
+      "name": "tickets",
+      "schema": "",
+      "columns": {
+        "ticket_number": {
+          "name": "ticket_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "entry_time": {
+          "name": "entry_time",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "exit_time": {
+          "name": "exit_time",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_scanned_at": {
+          "name": "last_scanned_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "tickets_ticket_number_idx": {
+          "name": "tickets_ticket_number_idx",
+          "columns": [
+            {
+              "expression": "ticket_number",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "tickets_id_idx": {
+          "name": "tickets_id_idx",
+          "columns": [
+            {
+              "expression": "id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": true
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

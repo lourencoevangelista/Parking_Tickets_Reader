@@ -1,0 +1,103 @@
+{
+  "id": "941a5c4b-97c2-4abb-8e67-0ec1c6c79a6a",
+  "prevId": "145db9ec-22ec-4d45-8a05-20f5c6a09647",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.tickets": {
+      "name": "tickets",
+      "schema": "",
+      "columns": {
+        "ticket_number": {
+          "name": "ticket_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "entry_time": {
+          "name": "entry_time",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "exit_time": {
+          "name": "exit_time",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "scan_count": {
+          "name": "scan_count",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'1'"
+        },
+        "last_scanned_at": {
+          "name": "last_scanned_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "tickets_ticket_number_idx": {
+          "name": "tickets_ticket_number_idx",
+          "columns": [
+            {
+              "expression": "ticket_number",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "tickets_id_idx": {
+          "name": "tickets_id_idx",
+          "columns": [
+            {
+              "expression": "id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
